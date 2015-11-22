@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo2</title>
+    <script src="../react/react.min.js"></script>
+    <script src="../react/react-dom.js"></script>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+<div id="mount"></div>
+<script type="text/babel">
+        var Input = React.createClass({
+            getInitialState: function() {
+                return { userInput: 'None'}
+            },
+            handleInputChange: function() {
+                this.setState({ userInput: this.refs.userInput.value })
+            },
+            render: function() {
+                return (<div>
+                        <input className='user-input' ref='userInput' onChange={this.handleInputChange} />
+                <p className='show-input'>{this.state.userInput}</p>
+                </div>
+                );
+            }
+    });
+
+    ReactDOM.render(
+            <Input />,
+            document.getElementById('mount')
+    );
+</script>
+</body>
+</html>
