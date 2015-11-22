@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo3</title>
+    <script src="../react/react.min.js"></script>
+    <script src="../react/react-dom.min.js"></script>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+<div id="mount"></div>
+<script type="text/babel">
+    var AnswerRadioInput = React.createClass({
+        propTypes: {
+            id: React.PropTypes.string,
+            name: React.PropTypes.string,
+            label: React.PropTypes.string,
+            value: React.PropTypes.string,
+            checked: React.PropTypes.bool
+        },
+        getDefaultProps: function () {
+            return {
+                id: null,
+                checked: false
+            };
+        },
+        getInitialState: function () {
+            var id = this.props.id ? this.props.id : unique('radio-');
+            return {
+                checked: !!this.props.checked,
+                id: id,
+                name: id
+            };
+        },
+        render: function () {
+            return (
+                    <div className="radio">
+                        <label htmlFor={this.props.id}>
+                            <input type="radio"
+                                name={this.props.name}
+                                id={this.props.id}
+                                value={this.props.value}
+                                checked={this.state.checked} />
+                            {this.props.label}
+                        </label>
+                    </div>
+            )
+        }
+    });
+</script>
+</body>
+</html>
