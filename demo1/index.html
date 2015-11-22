@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>demo1</title>
+	<script src="../react/react.min.js"></script>
+	<script src="../react/react-dom.min.js"></script>
+	<script src="../browser.min.js"></script>
+</head>
+<body>
+<div id="mount"></div>
+<script type="text/babel">
+
+	var Timerxx = React.createClass({
+		mixins: [{
+			getInitialState: function() { return {b: 2} }
+		}],
+		getInitialState: function() {
+			return {
+				secondsElapsed: 0,
+				a: 1
+			};
+		},
+		tick: function() {
+			this.setState({secondsElapsed: this.state.secondsElapsed + 1});
+		},
+		componentDidMount: function() {
+			this.interval = setInterval(this.tick, 1000);
+		},
+		componentWillUnmount: function() {
+			clearInterval(this.interval);
+		},
+		render: function() {
+			return (
+					<div>Second Elapsed: {this.state.secondsElapsed}{this.state.a}-{this.state.b}</div>
+			);
+		}
+	});
+	ReactDOM.render(
+		<Timerxx />,
+		document.getElementById('mount')
+	);
+</script>
+</body>
+</html>
