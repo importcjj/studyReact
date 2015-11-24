@@ -14,38 +14,30 @@
 
 发现三： 自定义组件的render函数只能返回一个定义元素，不能是一组元素；
 
-发现四： props用于在组件树中传递数据和配置。props在组件内部应该是
+发现四： props用于在组件树中传递数据和配置。props在组件内部应该是只读的！
 
-​		只读的！
+发现五： state只存在于组件内部，自定义组件应该通过setState修改其state，每当修改state时，都会重新调用render方法；
 
-发现五： state只存在于组件内部，自定义组件应该通过setState修改其state，
-
-               每当修改state时，都会重新调用render方法；
-
-
+<br />
 
 - 2015年11月23日10:46:22
 
-发现一：通过refs获取组件树中带有ref属性的DOM节点，必须在虚拟DOM渲染
-
-​		之后(componentDidMount之后)；
+发现一：通过refs获取组件树中带有ref属性的DOM节点，必须在虚拟DOM渲染之后(componentDidMount之后)；
 
 发现二： 通过refs获取真实DOM节点时，ref属性的值必须是唯一；
 
-发现三： 通过refs获取真实DOM节点时，写不写.getDOMNode()好像都能获取
+发现三： 通过refs获取真实DOM节点时，写不写.getDOMNode()好像都能获取成功；
 
-​		成功；
+<br />
 
-- 时间
+- 2015年11月24日16:30:59
 
 发现一：尽管refs很强大，但是可能会成为React在性能上的障碍；
 
-
+<br />
 
 - 2015年11月24日15:35:58
 
 发现一： 无约束组件的值不受react控制，如果想访问它们的值，应该使用ref属性
 
-​		取到真实DOM。 相反，约束组件的值往往通过state react所掌控。处理
-
-​		处理事件使用event.target来获取触发时间的DOM节点。
+取到真实DOM。 相反，约束组件的值往往通过state react所掌控。处理事件使用event.target来获取触发时间的DOM节点。
