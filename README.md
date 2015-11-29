@@ -16,7 +16,26 @@
 
 发现四： props用于在组件树中传递数据和配置。props在组件内部应该是只读的！
 
-发现五： state只存在于组件内部，自定义组件应该通过setState修改其state，
+发现五： state只存在于组件内部，自定义组件应该通过setState修改其state，每当修改state时，都会重新调用render方法；
 
-               每当修改state时，都会重新调用render方法；
+<br />
 
+- 2015年11月23日10:46:22
+
+发现一：通过refs获取组件树中带有ref属性的DOM节点，必须在虚拟DOM渲染之后(componentDidMount之后)；
+
+发现二： 通过refs获取真实DOM节点时，ref属性的值必须是唯一；
+
+发现三： 通过refs获取真实DOM节点时，写不写.getDOMNode()好像都能获取成功；
+
+<br />
+
+- 2015年11月24日16:30:59
+
+发现一：尽管refs很强大，但是可能会成为React在性能上的障碍；
+
+<br />
+
+- 2015年11月24日15:35:58
+
+发现一： 无约束组件的值不受react控制，可使用ref属性取真实DOM节点。 相反，约束组件的值往往通过state 被react所掌控，可在事件处理函数中使用event.target来获取该DOM节点。

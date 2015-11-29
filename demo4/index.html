@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo4</title>
+    <script src="../react/react.min.js"></script>
+    <script src="../react/react-dom.min.js"></script>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+<div id="mount"></div>
+<script type="text/babel">
+    var RichText = React.createClass({
+        handleKeyDown: function () {
+            var editor = this.refs.editableDiv;
+            console.log(editor);
+            var html = editor.innerHTML;
+        },
+        render: function () {
+            return (
+                        <div ref="editableDiv" contentEditable="true" onKeyDown={this.handleKeyDown} ></div>
+            )
+        }
+    });
+
+    ReactDOM.render(
+            <RichText />,
+            document.getElementById('mount')
+    );
+</script>
+</body>
+</html>
