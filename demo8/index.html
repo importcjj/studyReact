@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../react/react.min.js"></script>
+    <script src="../react/react-dom.min.js"></script>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+<div id="mount"></div>
+<script type="text/babel">
+
+    var rawHTML = {
+        __html: "<h1>Hello React DangeroutlySetInnerHTML</h1>"
+    }
+    var DynamicHtml = React.createClass({
+        getInitialState: function () {
+            return {
+                html: ""
+            }
+        },
+        markdown: function () {
+            return {
+                __html: this.state.html
+            }
+        },
+        handleClick: function () {
+            this.setState({html: rawHTML.__html });
+        },
+        render: function () {
+            return (
+                    <div>
+                        <div dangerouslySetInnerHTML={this.markdown()}/>
+                        <button onClick={this.handleClick}>add html</button>
+                    </div>
+            )
+        }
+    });
+
+    ReactDOM.render(
+            <DynamicHtml />,
+            document.getElementById('mount')
+    );
+</script>
+</body>
+</html>

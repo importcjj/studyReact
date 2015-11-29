@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo7 mixins</title>
+    <script src="../react/react.min.js"></script>
+    <script src="../react/react-dom.min.js"></script>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+<div id="mount"></div>
+<script type="text/babel">
+    var BindMixin = {
+        handleChange: function (key) {
+            var that = this;
+            return function  (event) {
+                var newState = {};
+                newState[key] = event.target.value;
+                that.setState(newState);
+            }
+        }
+    }
+
+    var BindForm = React.createClass({
+        mixins: [BindMixin],
+        getInitialState: function () {
+            return {
+                text: ""
+            }
+        },
+        render: function () {
+            return (<div>
+                    <input type="text" onChange={this.handleChange('text')} />
+                <p>{this.state.text}</p>
+            </div>
+            )
+        }
+    });
+
+    ReactDOM.render(
+            <BindForm />,
+            document.getElementById('mount')
+    );
+</script>
+</body>
+</html>
